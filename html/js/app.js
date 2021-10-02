@@ -445,7 +445,8 @@ QB.Phone.Functions.LoadPhoneData = function(data) {
     QB.Phone.Functions.LoadMetaData(data.PhoneData.MetaData);
     QB.Phone.Functions.LoadContacts(data.PhoneData.Contacts);
     QB.Phone.Functions.SetupApplications(data);
-    // console.log("Phone succesfully loaded!");
+    $("#phone-serverid").html("<span style='font-size: 1.3vh; font-weight:bold;'>" + data.serverid + "</span>");
+    console.log("Phone succesfully loaded!");
 }
 
 QB.Phone.Functions.UpdateTime = function(data) {    
