@@ -181,7 +181,7 @@ Config.StoreApps = {
         blockedjobs = {},
         slot = 15,
         Alerts = 0,
-        password = true,
+        password = false,
         creator = "QBCore",
         title = "Territory",
     },
