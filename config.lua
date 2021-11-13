@@ -4,7 +4,8 @@ Config.BillingCommissions = { -- This is a percentage (0.10) == 10%
 }
 Config.RepeatTimeout = 2000
 Config.CallRepeats = 10
-Config.OpenPhone = 244
+Config.OpenPhone = 172
+Config.ClosePhone = 173
 Config.PhoneApplications = {
     ["phone"] = {
         app = "phone",
@@ -170,19 +171,4 @@ Config.PhoneApplications = {
 Config.MaxSlots = 20
 
 Config.StoreApps = {
-    ["territory"] = {
-        app = "territory",
-        color = "#353b48",
-        icon = "fas fa-globe-europe",
-        tooltipText = "Territorium",
-        tooltipPos = "right",
-        style = "";
-        job = false,
-        blockedjobs = {},
-        slot = 15,
-        Alerts = 0,
-        password = false,
-        creator = "QBCore",
-        title = "Territory",
-    },
 }

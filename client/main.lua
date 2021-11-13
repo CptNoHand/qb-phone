@@ -252,13 +252,6 @@ local function LoadPhone()
             PhoneData.CryptoTransactions = pData.CryptoTransactions
         end
 
-        SendNUIMessage({
-            action = "LoadPhoneData",
-            PhoneData = PhoneData,
-            PlayerData = PhoneData.PlayerData,
-            PlayerJob = PhoneData.PlayerData.job,
-            applications = Config.PhoneApplications
-        })
         SendNUIMessage({ 
             action = "LoadPhoneData", 
             PhoneData = PhoneData, 
@@ -306,6 +299,25 @@ local function OpenPhone()
             end)
         else
             QBCore.Functions.Notify("You don't have a phone", "error")
+        end
+    end)
+end
+
+local function ClosePhone()
+    QBCore.Functions.TriggerCallback('qb-phone:server:HasPhone', function(HasPhone)
+        if PhoneData.isOpen = true then
+            PhoneData.PlayerData = QBCore.Functions.GetPlayerData()
+    	    SetNuiFocus(true, true)
+            SendNUIMessage({
+                action = "close",
+                Tweets = PhoneData.Tweets,
+                AppData = Config.PhoneApplications,
+                CallData = PhoneData.CallData,
+                PlayerData = PhoneData.PlayerData,
+            })
+            PhoneData.isOpen = false
+        else
+            QBCore.Functions.Notify("You don't have an open phone", "error")
         end
     end)
 end
@@ -471,7 +483,19 @@ RegisterCommand('phone', function()
     end
 end)
 
-RegisterKeyMapping('phone', 'Open Phone', 'keyboard', 'M')
+RegisterCommand('closephone', function()
+    PlayerData = QBCore.Functions.GetPlayerData()
+    if PhoneData.isOpen and LocalPlayer.state.isLoggedIn then
+        if not PlayerData.metadata['ishandcuffed'] and not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] and not IsPauseMenuActive() then
+            ClosePhone()
+        else
+            QBCore.Functions.Notify("Action not available at the moment..", "error")
+        end
+    end
+end)
+
+RegisterKeyMapping('phone', 'Open Phone', 'keyboard', 'ARROW UP')
+RegisterKeyMapping('closephone', 'Close Phone', 'keyboard', 'ARROW DOWN')
 
 -- NUI Callbacks
 
