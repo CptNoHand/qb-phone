@@ -145,35 +145,6 @@ function CloseCryptoPage() {
     QB.Phone.Functions.HeaderTextColor("white", 300);
 }
 
-$(document).on('click', '#buy-crypto', function(e){
-    e.preventDefault();
-
-    var Coins = $(".crypto-action-page-buy-crypto-input-coins").val();
-    var Price = $(".crypto-action-page-buy-crypto-input-money").val();
-
-    if ((Coins !== "") && (Price !== "")) {
-        if (QB.Phone.Data.PlayerData.money.bank >= Price) {
-            $.post('https://qb-phone/BuyCrypto', JSON.stringify({
-                Coins: Coins,
-                Price: Price,
-            }), function(CryptoData){
-                if (CryptoData !== false) {
-                    UpdateCryptoData(CryptoData)
-                    CloseCryptoPage()
-                    QB.Phone.Data.PlayerData.money.bank = parseInt(QB.Phone.Data.PlayerData.money.bank) - parseInt(Price);
-                    QB.Phone.Notifications.Add("fas fa-university", "QBank", "&#36; "+Price+",- has been withdrawn from your balance!", "#badc58", 2500);
-                } else {
-                    QB.Phone.Notifications.Add("fas fa-chart-pie", "Crypto", "You don't have enough money..", "#badc58", 1500);
-                }
-            });
-        } else {
-            QB.Phone.Notifications.Add("fas fa-chart-pie", "Crypto", "You don't have enough money..", "#badc58", 1500);
-        }
-    } else {
-        QB.Phone.Notifications.Add("fas fa-chart-pie", "Crypto", "Fill out all fields!", "#badc58", 1500);
-    }
-});
-
 $(document).on('click', '#sell-crypto', function(e){
     e.preventDefault();
     if(e.handled !== true) {
