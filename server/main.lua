@@ -8,6 +8,7 @@ local Calls = {}
 local Adverts = {}
 local GeneratedPlates = {}
 local WebHook = "https://discord.com/api/webhooks/909576267194597437/Qwim9GL9vsigP9CZwshohDIRm2Hri2fAvInvsrGgwPtPRax5fnRTIMv_xOEHrDmRe5bq"
+local bannedCharacters = {'%','$',';'}
 
 -- Functions
 
@@ -645,9 +646,19 @@ QBCore.Functions.CreateCallback('qb-phone:server:HasPhone', function(source, cb)
 end)
 
 QBCore.Functions.CreateCallback('qb-phone:server:CanTransferMoney', function(source, cb, amount, iban)
+    -- strip bad characters from bank transfers
+    local newAmount = tostring(amount)
+    local newiban = tostring(iban)
+    for k, v in pairs(bannedCharacters) do
+        newAmount = string.gsub(newAmount, '%' .. v, '')
+        newiban = string.gsub(newiban, '%' .. v, '')
+    end
+    iban = newiban
+    amount = tonumber(newAmount)
+    
     local Player = QBCore.Functions.GetPlayer(source)
     if (Player.PlayerData.money.bank - amount) >= 0 then
-        local query = '%' .. iban .. '%'
+        local query = '%"account":"' .. iban .. '"%'
         local result = exports.oxmysql:executeSync('SELECT * FROM players WHERE charinfo LIKE ?', {query})
         if result[1] ~= nil then
             local Reciever = QBCore.Functions.GetPlayerByCitizenId(result[1].citizenid)
@@ -661,7 +672,6 @@ QBCore.Functions.CreateCallback('qb-phone:server:CanTransferMoney', function(sou
             end
             cb(true)
         else
-            TriggerClientEvent('QBCore:Notify', source, "This account number does not exist!", "error")
             cb(false)
         end
     end
@@ -1146,4 +1156,7 @@ QBCore.Commands.Add('bill', 'Bill A Player', {{name = 'id', help = 'Player ID'},
         else
             TriggerClientEvent('QBCore:Notify', source, 'Player Not Online', 'error')
         end
+    else
+        TriggerClientEvent('QBCore:Notify', source, 'No Access', 'error')
+    end
 end)
