@@ -694,6 +694,7 @@ QBCore.Functions.CreateCallback('qb-phone:server:GetCurrentLawyers', function(so
         if Player ~= nil then
             if (Player.PlayerData.job.name == "lawyer" or Player.PlayerData.job.name == "realestate" or
                 Player.PlayerData.job.name == "mechanic" or Player.PlayerData.job.name == "taxi" or
+                Player.PlayerData.job.name == "redline" or Player.PlayerData.job.name == "sunrise" or
                 Player.PlayerData.job.name == "police" or Player.PlayerData.job.name == "ambulance") and
                 Player.PlayerData.job.onduty then
                 Lawyers[#Lawyers+1] = {
