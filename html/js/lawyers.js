@@ -6,8 +6,6 @@ SetupLawyers = function(data) {
     var taxi = [];
     var police = [];
     var ambulance = [];
-    var redline = [];
-    var sunrise = [];
 
     if (data.length > 0) {
 
@@ -29,12 +27,6 @@ SetupLawyers = function(data) {
             }
             if (lawyer.typejob == "ambulance") {
                 ambulance.push(lawyer);
-            }
-            if (lawyer.typejob == "redline") {
-                redline.push(lawyer);
-            }
-            if (lawyer.typejob == "sunrise") {
-                sunrise.push(lawyer);
             }
         });
 
@@ -115,32 +107,6 @@ SetupLawyers = function(data) {
             var element = '<div class="lawyer-list"><div class="no-lawyers">There is no ems available.</div></div>'
             $(".lawyers-list").append(element);
         }
-
-        $(".lawyers-list").append('<br><h1 style="font-size:1.641025641025641vh; padding:1.0256410256410255vh; color:#fff; margin-top:0; width:100%; display:block; background-color: rgb(255, 0, 0);">Redline Performance (' + redline.length + ')</h1>');
-
-        if (redline.length > 0) {
-            $.each(redline, function(i, lawyer5) {
-                var element = '<div class="lawyer-list" id="lawyerid5-' + i + '"> <div class="lawyer-list-firstletter" style="background-color: rgb(255, 0, 0);">' + (lawyer5.name).charAt(0).toUpperCase() + '</div> <div class="lawyer-list-fullname">' + lawyer5.name + '</div> <div class="lawyer-list-call"><i class="fas fa-phone"></i></div> </div>'
-                $(".lawyers-list").append(element);
-                $("#lawyerid5-" + i).data('LawyerData', lawyer5);
-            });
-        } else {
-            var element = '<div class="lawyer-list"><div class="no-lawyers">There is no mechanic available.</div></div>'
-            $(".lawyers-list").append(element);
-        }
-
-        $(".lawyers-list").append('<br><h1 style="font-size:1.641025641025641vh; padding:1.0256410256410255vh; color:#fff; margin-top:0; width:100%; display:block; background-color: rgb(255, 0, 0);">Sunrise Autos (' + sunrise.length + ')</h1>');
-
-        if (sunrise.length > 0) {
-            $.each(sunrise, function(i, lawyer5) {
-                var element = '<div class="lawyer-list" id="lawyerid5-' + i + '"> <div class="lawyer-list-firstletter" style="background-color: rgb(255, 0, 0);">' + (lawyer5.name).charAt(0).toUpperCase() + '</div> <div class="lawyer-list-fullname">' + lawyer5.name + '</div> <div class="lawyer-list-call"><i class="fas fa-phone"></i></div> </div>'
-                $(".lawyers-list").append(element);
-                $("#lawyerid5-" + i).data('LawyerData', lawyer5);
-            });
-        } else {
-            var element = '<div class="lawyer-list"><div class="no-lawyers">There is no cardealer available.</div></div>'
-            $(".lawyers-list").append(element);
-        }
     } else {
         $(".lawyers-list").append('<h1 style="font-size:1.641025641025641vh; padding:1.0256410256410255vh; color:#fff; margin-top:0; border-top-left-radius: .5vh; border-top-right-radius: .5vh; width:100%; display:block; background-color: rgb(42, 137, 214);">Lawyers (' + lawyers.length + ')</h1>');
 
@@ -170,16 +136,6 @@ SetupLawyers = function(data) {
         $(".lawyers-list").append('<br><h1 style="font-size:1.641025641025641vh; padding:1.0256410256410255vh; color:#fff; margin-top:0; width:100%; display:block; background-color: rgb(255, 0, 0);">Ambulance (' + ambulance.length + ')</h1>');
 
         var element = '<div class="lawyer-list"><div class="no-lawyers">There are no ambulance personnel a available.</div></div>'
-        $(".lawyers-list").append(element);
-
-        $(".lawyers-list").append('<br><h1 style="font-size:1.641025641025641vh; padding:1.0256410256410255vh; color:#fff; margin-top:0; width:100%; display:block; background-color: rgb(255, 0, 0);">Redline (' + redline.length + ')</h1>');
-
-        var element = '<div class="lawyer-list"><div class="no-lawyers">There are no Redline Performance personnel a available.</div></div>'
-        $(".lawyers-list").append(element);
-
-        $(".lawyers-list").append('<br><h1 style="font-size:1.641025641025641vh; padding:1.0256410256410255vh; color:#fff; margin-top:0; width:100%; display:block; background-color: rgb(255, 0, 0);">Sunrise (' + sunrise.length + ')</h1>');
-
-        var element = '<div class="lawyer-list"><div class="no-lawyers">There are no Sunrise Autos personnel a available.</div></div>'
         $(".lawyers-list").append(element);
     }
 }
