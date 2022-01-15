@@ -662,6 +662,7 @@ RegisterNUICallback('PayInvoice', function(data, cb)
     --Jim's Ticket Systems
 	if data.society == "catcafe" then TriggerServerEvent('jim-catcafe:Tickets:Give', data.amount) end
     if data.society == "vanilla" then TriggerServerEvent('jim-vanillaunicorn:Tickets:Give', data.amount) end
+    if data.society == "pizzathis" then TriggerServerEvent('jim-pizzathis:Tickets:Give', data.amount) end
 end)
 
 RegisterNUICallback('DeclineInvoice', function(data, cb)
