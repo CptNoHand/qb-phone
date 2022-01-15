@@ -4,6 +4,7 @@ Config.BillingCommissions = { -- This is a percentage (0.10) == 10%
     catcafe = 0.10,
     vanilla = 0.10
 }
+Config.Linux = false -- True if linux
 Config.RepeatTimeout = 2000
 Config.CallRepeats = 10
 Config.OpenPhone = 244
