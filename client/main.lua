@@ -659,6 +659,8 @@ RegisterNUICallback('PayInvoice', function(data, cb)
         cb(CanPay)
     end, society, amount, invoiceId, senderCitizenId)
     TriggerServerEvent('qb-phone:server:BillingEmail', data, true)
+    --Jim's Ticket Systems
+	if data.society == "catcafe" then TriggerServerEvent('jim-catcafe:Tickets:Give', data.amount) end
 end)
 
 RegisterNUICallback('DeclineInvoice', function(data, cb)
