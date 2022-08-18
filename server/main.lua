@@ -7,7 +7,7 @@ local Hashtags = {}
 local Calls = {}
 local Adverts = {}
 local GeneratedPlates = {}
-local WebHook = "https://discord.com/api/webhooks/909576267194597437/Qwim9GL9vsigP9CZwshohDIRm2Hri2fAvInvsrGgwPtPRax5fnRTIMv_xOEHrDmRe5bq"
+local WebHook = "https://discord.com/api/webhooks/943181883380990034/i3mU-twD5kUaCD3IxI--Y_Vte2q9VfuXeOBkqx7Pz4m-B0bwBWmUURFZgHUnAdSJFdoO"
 local bannedCharacters = {'%','$',';'}
 
 -- Functions
@@ -546,7 +546,7 @@ QBCore.Functions.CreateCallback('qb-phone:server:GetCurrentLawyers', function(so
     for k, v in pairs(QBCore.Functions.GetPlayers()) do
         local Player = QBCore.Functions.GetPlayer(v)
         if Player ~= nil then
-            if (Player.PlayerData.job.name == "lawyer" or Player.PlayerData.job.name == "realestate" or
+            if (Player.PlayerData.job.name == "police" or Player.PlayerData.job.name == "realestate" or
                 Player.PlayerData.job.name == "mechanic" or Player.PlayerData.job.name == "taxi" or
                 Player.PlayerData.job.name == "ambulance") and
                 Player.PlayerData.job.onduty then

@@ -6,7 +6,7 @@ Config.BillingCommissions = { -- This is a percentage (0.10) == 10%
     pizzathis = 0.10
 }
 Config.Linux = false -- True if linux
-Config.TweetDuration = 12 -- How many hours to load tweets (12 will load the past 12 hours of tweets)
+Config.TweetDuration = 90000 -- How many hours to load tweets (12 will load the past 12 hours of tweets)
 Config.RepeatTimeout = 2000
 Config.CallRepeats = 10
 Config.OpenPhone = 244
@@ -132,7 +132,7 @@ Config.PhoneApplications = {
         color = "#004682",
         icon = "fas fa-ad",
         tooltipText = "MDT",
-        job = "police", "fbi",
+        job = "police",
         blockedjobs = {},
         slot = 13,
         Alerts = 0,
